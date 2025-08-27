@@ -1,0 +1,359 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Desert Oasis Color System - Harmonious Blend */
+  --background: #F4E1C1; /* Sand Beige - Main background */
+  --foreground: #1A4E8A; /* Deep Water Blue - Primary text */
+  --card: #F8F0E0; /* Lighter Sand Beige - Card backgrounds */
+  --card-foreground: #1A4E8A; /* Deep Water Blue - Card text */
+  --popover: #F8F0E0; /* Lighter Sand Beige - Popover backgrounds */
+  --popover-foreground: #1A4E8A; /* Deep Water Blue - Popover text */
+  --primary: #3A7D44; /* Oasis Green - Primary brand color */
+  --primary-foreground: #F4E1C1; /* Sand Beige - Text on primary */
+  --secondary: #C19A6B; /* Earth Brown - Secondary color */
+  --secondary-foreground: #F4E1C1; /* Sand Beige - Text on secondary */
+  --muted: #E8D5B5; /* Muted Sand Beige - Subtle backgrounds */
+  --muted-foreground: #8B6F47; /* Darker Earth Brown - Muted text */
+  --accent: #FFB347; /* Accent Orange - Highlight color */
+  --accent-foreground: #1A4E8A; /* Deep Water Blue - Text on accent */
+  --destructive: #DC2626; /* Red for errors */
+  --destructive-foreground: #F4E1C1; /* Sand Beige - Text on destructive */
+  --border: #C19A6B; /* Earth Brown - Borders */
+  --input: #F8F0E0; /* Lighter Sand Beige - Input backgrounds */
+  --ring: #3A7D44; /* Oasis Green - Focus rings */
+  --chart-1: #3A7D44; /* Oasis Green */
+  --chart-2: #4DA6A6; /* Tranquil Teal */
+  --chart-3: #C19A6B; /* Earth Brown */
+  --chart-4: #1A4E8A; /* Deep Water Blue */
+  --chart-5: #FFB347; /* Accent Orange */
+  --radius: 0.5rem;
+
+  /* Custom Desert Oasis Colors */
+  --sand-beige: #F4E1C1; /* Main background */
+  --sand-light: #F8F0E0; /* Lighter backgrounds */
+  --sand-muted: #E8D5B5; /* Muted backgrounds */
+  --earth-brown: #C19A6B; /* Secondary, borders */
+  --earth-dark: #8B6F47; /* Darker text */
+  --oasis-green: #3A7D44; /* Primary brand */
+  --oasis-light: #4A8D54; /* Lighter green */
+  --tranquil-teal: #4DA6A6; /* Accent teal */
+  --deep-blue: #1A4E8A; /* Primary text, headings */
+  --deep-blue-light: #2A5E9A; /* Lighter blue */
+  --accent-orange: #FFB347; /* Highlight, CTAs */
+  --accent-orange-light: #FFC367; /* Lighter orange */
+  
+  /* Section Background Colors - Simplified Palette */
+  --section-bg: #F4E1C1; /* Sand Beige */
+  --section-alt: #4DA6A6; /* Tranquil Teal */
+  --section-muted: #1A4E8A; /* Deep Water Blue */
+  --section-accent: #F4E1C1; /* Sand Beige */
+}
+
+.dark {
+  --background: #1A4E8A; /* Deep Water Blue - Dark background */
+  --foreground: #F4E1C1; /* Sand Beige - Light text */
+  --card: #2A5E9A; /* Lighter Deep Blue - Dark card backgrounds */
+  --card-foreground: #F4E1C1; /* Sand Beige - Light card text */
+  --popover: #2A5E9A; /* Lighter Deep Blue - Dark popover backgrounds */
+  --popover-foreground: #F4E1C1; /* Sand Beige - Light popover text */
+  --primary: #4A8D54; /* Lighter Oasis Green - Primary in dark mode */
+  --primary-foreground: #1A4E8A; /* Deep Water Blue - Text on primary */
+  --secondary: #D4B08C; /* Lighter Earth Brown - Secondary in dark mode */
+  --secondary-foreground: #1A4E8A; /* Deep Water Blue - Text on secondary */
+  --muted: #3A6E9A; /* Muted Deep Blue - Subtle dark backgrounds */
+  --muted-foreground: #A8C5E0; /* Light Blue - Muted text in dark mode */
+  --accent: #FFC367; /* Lighter Accent Orange - Highlight in dark mode */
+  --accent-foreground: #1A4E8A; /* Deep Water Blue - Text on accent */
+  --destructive: #EF4444; /* Red for errors in dark mode */
+  --destructive-foreground: #F4E1C1; /* Sand Beige - Text on destructive */
+  --border: #4A7EAA; /* Lighter Deep Blue - Borders in dark mode */
+  --input: #2A5E9A; /* Lighter Deep Blue - Input backgrounds in dark mode */
+  --ring: #4A8D54; /* Lighter Oasis Green - Focus rings in dark mode */
+  --chart-1: #4A8D54; /* Lighter Oasis Green */
+  --chart-2: #5DB6B6; /* Lighter Tranquil Teal */
+  --chart-3: #D4B08C; /* Lighter Earth Brown */
+  --chart-4: #2A5E9A; /* Lighter Deep Water Blue */
+  --chart-5: #FFC367; /* Lighter Accent Orange */
+  --sidebar: #2A5E9A; /* Lighter Deep Blue */
+  --sidebar-foreground: #F4E1C1; /* Sand Beige */
+  --sidebar-primary: #4A8D54; /* Lighter Oasis Green */
+  --sidebar-primary-foreground: #1A4E8A; /* Deep Water Blue */
+  --sidebar-accent: #3A6E9A; /* Muted Deep Blue */
+  --sidebar-accent-foreground: #A8C5E0; /* Light Blue */
+  --sidebar-border: #4A7EAA; /* Lighter Deep Blue */
+  --sidebar-ring: #4A8D54; /* Lighter Oasis Green */
+  
+  /* Dark mode section backgrounds */
+  --section-bg: #2A5E9A; /* Lighter Deep Blue */
+  --section-alt: #3A6E9A; /* Muted Deep Blue */
+  --section-muted: #1A4E8A; /* Main Deep Blue */
+  --section-accent: #2A4E3A; /* Dark Oasis Green tint */
+}
+
+@theme inline {
+  --font-sans: var(--font-dm-sans);
+  --font-serif: var(--font-dm-sans);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-sans font-semibold;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Custom Animations */
+@layer components {
+  /* Scroll-driven animations */
+  .fade-in-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: opacity, transform;
+  }
+
+  .fade-in-up.animate {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .fade-in-left {
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: opacity, transform;
+  }
+
+  .fade-in-left.animate {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .fade-in-right {
+    opacity: 0;
+    transform: translateX(30px);
+    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: opacity, transform;
+  }
+
+  .fade-in-right.animate {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .scale-in {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .scale-in.animate {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  /* Hover animations */
+  .hover-lift {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  }
+
+  .hover-glow {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .hover-glow:hover {
+    box-shadow: 0 0 20px rgba(58, 125, 68, 0.3);
+  }
+
+  .hover-scale {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .hover-scale:hover {
+    transform: scale(1.05);
+  }
+
+  .hover-rotate {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .hover-rotate:hover {
+    transform: rotate(5deg);
+  }
+
+  /* Button hover effects */
+  .btn-hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-hover::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+  }
+
+  .btn-hover:hover::before {
+    left: 100%;
+  }
+
+  /* Card hover effects */
+  .card-hover {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+  }
+
+  .card-hover::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, transparent 0%, rgba(58, 125, 68, 0.05) 100%);
+    opacity: 0;
+    transition: opacity 0.4s;
+    border-radius: inherit;
+  }
+
+  .card-hover:hover::after {
+    opacity: 1;
+  }
+
+  /* Text reveal animation */
+  .text-reveal {
+    overflow: hidden;
+    position: relative;
+  }
+
+  .text-reveal::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--primary);
+    transform: translateX(-100%);
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .text-reveal.animate::after {
+    transform: translateX(100%);
+  }
+
+  /* Parallax effect */
+  .parallax {
+    transform: translateZ(0);
+    will-change: transform;
+  }
+
+  /* Stagger animation for lists */
+  .stagger-item {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .stagger-item.animate {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Loading animation */
+  .loading-dots {
+    display: inline-block;
+  }
+
+  .loading-dots::after {
+    content: '';
+    animation: loading-dots 1.5s infinite;
+  }
+
+  @keyframes loading-dots {
+    0%, 20% { content: ''; }
+    40% { content: '.'; }
+    60% { content: '..'; }
+    80%, 100% { content: '...'; }
+  }
+
+  /* Pulse animation */
+  .pulse-glow {
+    animation: pulse-glow 2s infinite;
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 5px rgba(58, 125, 68, 0.5);
+    }
+    50% {
+      box-shadow: 0 0 20px rgba(58, 125, 68, 0.8);
+    }
+  }
+}
