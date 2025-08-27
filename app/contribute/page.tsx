@@ -19,7 +19,9 @@ export default function ContributePage() {
             loop
             muted
             playsInline
+            preload="auto"
             className="object-cover w-full h-full"
+            poster="/images/video-poster.jpg"
           >
             <source src="/desert.mp4" type="video/mp4" />
             Your browser does not support the video tag.

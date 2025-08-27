@@ -9,13 +9,18 @@ interface AnimationWrapperProps {
 
 export function AnimationWrapper({ children }: AnimationWrapperProps) {
   useEffect(() => {
-    // Initialize all animations when component mounts
-    const cleanup = initAllAnimations()
+    // Check if user prefers reduced motion
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     
-    // Cleanup function to remove event listeners
-    return () => {
-      if (cleanup && typeof cleanup === 'function') {
-        cleanup()
+    // Only initialize animations if user doesn't prefer reduced motion
+    if (!prefersReducedMotion) {
+      const cleanup = initAllAnimations()
+      
+      // Cleanup function to remove event listeners
+      return () => {
+        if (cleanup && typeof cleanup === 'function') {
+          cleanup()
+        }
       }
     }
   }, [])

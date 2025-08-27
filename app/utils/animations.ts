@@ -40,17 +40,28 @@ export const initScrollAnimations = () => {
 export const initParallax = () => {
   const parallaxElements = document.querySelectorAll('.parallax');
   
+  let ticking = false;
+  
   const handleScroll = () => {
-    const scrolled = window.pageYOffset;
-    
-    parallaxElements.forEach((element) => {
-      const speed = (element as HTMLElement).dataset.speed || '0.5';
-      const yPos = -(scrolled * parseFloat(speed));
-      (element as HTMLElement).style.transform = `translateY(${yPos}px)`;
-    });
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        const scrolled = window.pageYOffset;
+        
+        parallaxElements.forEach((element) => {
+          const speed = (element as HTMLElement).dataset.speed || '0.5';
+          const yPos = -(scrolled * parseFloat(speed));
+          (element as HTMLElement).style.transform = `translateY(${yPos}px)`;
+        });
+        
+        ticking = false;
+      });
+      
+      ticking = true;
+    }
   };
 
-  window.addEventListener('scroll', handleScroll);
+  // Use passive listener for better performance
+  window.addEventListener('scroll', handleScroll, { passive: true });
   return () => window.removeEventListener('scroll', handleScroll);
 };
 
@@ -100,9 +111,19 @@ export const initHoverEffects = () => {
 // Initialize all animations
 export const initAllAnimations = () => {
   if (typeof window !== 'undefined') {
+    // Check if device is mobile for performance optimizations
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    
+    // Initialize core animations
     initScrollAnimations();
-    initParallax();
+    
+    // Only initialize heavy animations on desktop
+    if (!isMobile) {
+      initParallax();
+      initHoverEffects();
+    }
+    
+    // Initialize text reveal (lightweight)
     initTextReveal();
-    initHoverEffects();
   }
 };

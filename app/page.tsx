@@ -20,7 +20,7 @@ export default function HomePage() {
             loop
             muted
             playsInline
-            preload="metadata"
+            preload="auto"
             className="object-cover w-full h-full"
             poster="/images/video-poster.jpg"
           >
